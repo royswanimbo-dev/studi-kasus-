@@ -1,0 +1,413 @@
+/* =========================
+   moderncss001
+   ========================= */
+
+/*
+  Catatan:
+  - CSS ini mengganti versi lama.
+  - Elemen typing effect akan memakai class: .typewriter dan .typewriter-text
+  - Particle/bintang menggunakan layer .particles (akan aktif jika ditambah di HTML; jika tidak, tetap aman)
+*/
+
+/* =========================
+   GLOBAL
+========================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #050816;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* =========================
+   NAVBAR MODERN
+========================= */
+
+.navbar {
+  background: rgba(133, 130, 131, 0.75) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navbar-brand {
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+.nav-link {
+  color: white !important;
+  margin-left: 10px;
+  transition: 0.3s;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: #00e5ff !important;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: #00e5ff;
+  transition: 0.3s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(circle at top left, rgba(255, 251, 3, 0.2), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(248, 252, 12, 0.25), transparent 30%),
+    linear-gradient(135deg, #030712, #071a3a, #ff034e);
+}
+
+/* Grid cyber background */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+
+  background-size: 45px 45px;
+
+  animation: moveGrid 12s linear infinite;
+}
+
+@keyframes moveGrid {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(45px);
+  }
+}
+
+/* Neon circle */
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: rgba(0, 229, 255, 0.12);
+  border-radius: 50%;
+  filter: blur(120px);
+
+  top: -200px;
+  right: -200px;
+
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* =========================
+   PARTICLES / BINTANG BERGERAK
+   (opsional; jika belum ada di HTML, tidak mengganggu)
+========================= */
+
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  opacity: 0.7;
+}
+
+.particles span {
+  position: absolute;
+  top: -10vh;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(0, 229, 255, 0.9);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
+  animation: starFall linear infinite;
+}
+
+@keyframes starFall {
+  from {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(120vh);
+    opacity: 0;
+  }
+}
+
+/* =========================
+   BINARY ANIMATION
+========================= */
+
+.binary {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.binary span {
+  position: absolute;
+  top: -100px;
+  color: rgba(0, 255, 255, 0.5);
+  font-size: 14px;
+  font-family: monospace;
+
+  animation: rain linear infinite;
+}
+
+
+@keyframes rain {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(120vh);
+    opacity: 0;
+  }
+}
+
+/* =========================
+   PROFILE IMAGE
+========================= */
+
+.profile-img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.2);
+
+  box-shadow:
+    0 0 25px rgba(0, 229, 255, 0.6),
+    0 0 60px rgba(13, 110, 253, 0.4);
+
+  transition: 0.5s;
+}
+
+.profile-img:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+/* =========================
+   HERO TEXT
+========================= */
+
+.hero h1 {
+  font-size: 58px;
+  font-weight: bold;
+  text-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+}
+
+.hero p {
+  max-width: 700px;
+  margin: auto;
+  opacity: 0.9;
+}
+
+/* =========================
+   TYPING TEXT EFFECT
+========================= */
+
+.typewriter {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.typewriter-text {
+  font-weight: 700;
+  color: #00e5ff;
+  text-shadow: 0 0 18px rgba(0, 229, 255, 0.45);
+}
+
+.typewriter-text::after {
+  content: '|';
+  margin-left: 6px;
+  opacity: 1;
+  animation: caretBlink 0.9s steps(1) infinite;
+}
+
+@keyframes caretBlink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn-primary {
+  background: linear-gradient(45deg, #00e5ff, #0d6efd);
+  border: none;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+}
+
+.btn-warning {
+  box-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
+}
+
+/* =========================
+   SECTION
+========================= */
+
+section {
+  padding: 100px 0;
+}
+
+/* =========================
+   CARD MODERN
+========================= */
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(10px);
+
+  color: white;
+
+  transition: 0.4s;
+  overflow: hidden;
+}
+
+.card img {
+  height: 240px;
+  object-fit: cover;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+
+  box-shadow:
+    0 0 25px rgba(0, 229, 255, 0.3);
+}
+
+/* =========================
+   PROGRESS BAR
+========================= */
+
+.progress {
+  height: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+}
+
+.progress-bar {
+  font-weight: bold;
+}
+
+/* =========================
+   SOCIAL ICONS
+========================= */
+
+.social-icons a {
+  color: white;
+  font-size: 32px;
+  margin: 10px;
+  transition: 0.4s;
+}
+
+.social-icons a:hover {
+  color: #00e5ff;
+
+  transform: translateY(-5px) scale(1.2);
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-control {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: white;
+}
+
+.form-control:focus {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  box-shadow: 0 0 10px #00e5ff;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  background: #020617;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .profile-img {
+    width: 170px;
+    height: 170px;
+  }
+}
+
